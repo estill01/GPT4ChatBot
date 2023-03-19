@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "gpt4chatbot"
+version = "0.1.0"
+description = "CLI and module interface to GPT-4; manage multiple chat threads"
+authors = ["estill01 <ehs.stillman@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^0.27.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
