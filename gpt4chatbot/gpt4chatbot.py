@@ -18,6 +18,7 @@ class GPT4ChatBot:
         self.auto_summarize_interval = auto_summarize_interval
         self.auto_higher_order_summarize_interval = auto_higher_order_summarize_interval
         self.auto_higher_order_summarize_base = auto_higher_order_summarize_base
+        self.working_on_project = None
 
 
     def create_chat(self, prompt=None, description=None, generate_description=True):
@@ -35,7 +36,7 @@ class GPT4ChatBot:
 
         with open(os.path.join(chat_path, "log.txt"), "w") as log_file:
             log_file.write(f"Chat created: {time.ctime()}\n")
-
+G
         self.chats[chat_id] = {
             "path": chat_path,
             "messages": [{"role": "system", "content": prompt}],
@@ -296,4 +297,9 @@ class GPT4ChatBot:
             log_file.write(f"User: {response['prompt']}\n")
             log_file.write(f"AI: {response.choices[0]['text']}\n")
             log_file.write("\n")
+
+    # Working on Projects
+
+    def set_project_type(self, project_type):
+        self.working_on_project = project_type
 
