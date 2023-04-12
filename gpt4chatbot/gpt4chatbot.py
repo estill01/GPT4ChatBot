@@ -8,6 +8,7 @@ from threading import Thread
 import math
 
 # TODO Refactor - extract functionality to properly organized file structure (it's time..)
+# TODO Integrate ChromaDB ; can query here first and then if no hits ping GPT4 API
 # TODO Implement summary-based 'context stretching'
 
 class GPT4ChatBot:
