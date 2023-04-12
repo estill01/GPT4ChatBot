@@ -136,9 +136,8 @@ class GPT4ChatBot:
             context += f"{message['role'].capitalize()}: {message['content']}\n"
         return context.strip()
     
-    # TODO Figure out if this is reasonable.. or if there's a more reasonable approach here
     def _default_stream_callback(self, chunk_text):
-        print(chunk_text)
+        print(chunk_text, end="", flush=True)
 
     def set_stream_callback_to_file(self, file_path):
         def file_stream_callback(chunk_text):
