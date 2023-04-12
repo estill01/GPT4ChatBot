@@ -6,12 +6,24 @@ Like every other dev on the planet, I built a quick GPT4 chat bot to get around 
 Feel free to use this package, or go build your own bot (it's a modern dev rite of passage you know).
 
 ## Features
-- Conduct and manage multiple chat threads
-- Branch chat threads wherever and whenever you want
-- Save all data locally in an easy to parse structure.
-- Multi-level auto summary generation
-  - The longer your thread, the higher-order summaries get generated
-- Supports block and streaming output
+🤹‍♀️ Conduct and manage multiple chat threads
+
+🌲 Branch chat threads wherever and whenever you want
+
+- Now you can zig _AND_ zag
+
+✅ Save all data locally in an easy to parse structure.
+
+🧠 Auto chat summary generation
+
+- "What you've been talking about recently" breakpoint summaries
+- Multi-level auto higher-order summaries
+
+🚿 Supports block and streaming output
+
+📐 Basic chat telemetry; duration, msg count, context length, ...
+
+🤖 Preliminary support for `modes` to change system behaviors
 
 
 ## Usage
