@@ -36,7 +36,7 @@ class GPT4ChatBot:
 
         with open(os.path.join(chat_path, "log.txt"), "w") as log_file:
             log_file.write(f"Chat created: {time.ctime()}\n")
-G
+
         self.chats[chat_id] = {
             "path": chat_path,
             "messages": [{"role": "system", "content": prompt}],
