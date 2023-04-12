@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "gpt4chatbot"
+name = "vertua"
 version = "0.1.0"
-description = "CLI and module interface to GPT-4; manage multiple chat threads"
+description = "Automate Everything Everywhere"
 authors = ["estill01 <ehs.stillman@gmail.com>"]
 readme = "README.md"
 

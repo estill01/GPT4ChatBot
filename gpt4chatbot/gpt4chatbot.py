@@ -7,10 +7,15 @@ from pathlib import Path
 from threading import Thread
 import math
 
+# TODO Get it to work with git repos ; make commits and etc like git2gpt does
+# TODO Web interface (?)
+
 class GPT4ChatBot:
     def __init__(self, api_key, auto_summarize_interval=5, auto_higher_order_summarize_base=5):
+        # TODO swap this for .. ChromaDB(?)
         self.chat_dir = "chats"
         Path(self.chat_dir).mkdir(exist_ok=True)
+
         self.active_chat = None
         self.chats = {}
         openai.api_key = api_key
@@ -36,7 +41,7 @@ class GPT4ChatBot:
 
         with open(os.path.join(chat_path, "log.txt"), "w") as log_file:
             log_file.write(f"Chat created: {time.ctime()}\n")
-G
+
         self.chats[chat_id] = {
             "path": chat_path,
             "messages": [{"role": "system", "content": prompt}],
@@ -125,8 +130,9 @@ G
             context += f"{message['role'].capitalize()}: {message['content']}\n"
         return context.strip()
     
+    # TODO Figure out if this is reasonable.. or if there's a more reasonable approach here
     def _default_stream_callback(self, chunk_text):
-        print("Received chunk:", chunk_text)
+        print(chunk_text)
 
     def set_stream_callback_to_file(self, file_path):
         def file_stream_callback(chunk_text):
@@ -135,6 +141,7 @@ G
 
         self.stream_callback = file_stream_callback
 
+    # TODO Fix this; gross defaults
     def generate_response(self, prompt, max_tokens=100, stream=False):
         if not stream:
             response = openai.Completion.create(
