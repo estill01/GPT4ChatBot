@@ -14,16 +14,18 @@ Feel free to use this package, or go build your own bot (it's a modern dev rite 
 
 ✅ Save all data locally in an easy to parse structure.
 
-🧠 Auto chat summary generation
+🧠 Auto chat content summary generation
 
 - "What you've been talking about recently" breakpoint summaries
 - Multi-level auto higher-order summaries
 
-🚿 Supports block and streaming output
+📐 Chat telemetry
+- duration, msg count, context length, ...
 
-📐 Basic chat telemetry; duration, msg count, context length, ...
+🚿  Block and streaming output to file or `stdout`
 
 🤖 Preliminary support for `modes` to change system behaviors
+- E.g. overwrite changes in doc vs append-only
 
 
 ## Usage
