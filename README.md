@@ -1,12 +1,35 @@
-# GPT4ChatBot
+# 👾 GPT4ChatBot
 
-Interact with GPT-4 from the comfort of your Command Line.
+> Not keen on 25 GPT-4 prompts every 3 hours? Me neither! Welcome to the free world.
 
-- Save all data locally in an easy to parse structure.
-- Manage and switch between multiple chat sessions contexts. 
+Like every other dev on the planet, I built a quick GPT4 chat bot to get around the extreme ChatGPT web ui rate limiting.
+Feel free to use this package, or go build your own bot (it's a modern dev rite of passage you know).
+
+## Features
+🤹‍♀️ Conduct and manage multiple chat threads
+
+🌲 Branch chat threads wherever and whenever you want
+
+- Now you can zig _AND_ zag
+
+✅ Save all data locally in an easy to parse structure.
+
+🧠 Auto chat content summary generation
+
+- "What you've been talking about recently" breakpoint summaries
+- Multi-level auto higher-order summaries
+
+📐 Chat telemetry
+- duration, msg count, context length, ...
+
+🚿  Block and streaming output to file or `stdout`
+
+🤖 Preliminary support for `modes` to change system behaviors
+- E.g. overwrite changes in doc vs append-only
+
 
 ## Usage
-Initialize it with your OpenAI API key and start creating and managing chats:
+Initialize it with your OpenAI API key and start creating and managing chats
 
 
 ### Basic Usage
@@ -37,71 +60,75 @@ gpt4_chat_bot.set_stream_callback_to_file("stream_output.txt")
 response = gpt4_chat_bot.submit_prompt(chat_id, "What is the weather like today?", max_tokens=50, stream=True)
 ```
 
-## Planned Features
+## TODO
 
-### Search
+These are individually pretty trivial to implement; Will add them as I have time.
 
-**Keyword-based search**
+### 🔎 Search
+
+#### Keyword
 
 Allow users to search for specific keywords or phrases within the chat messages across all branches. The chatbot can then display a list of matching branches or conversations, along with a brief summary or relevant excerpt for each.
 
-**Chronological navigation** 
+#### Chronological
 
 Enable users to navigate the chat history based on time or events, such as "go back to before we branched" or "go to the branch created on [date]". The chatbot can analyze the chat metadata to identify the appropriate branch or conversation and switch to it.
 
-**Topic-based search**
+#### Topic-based / Semantic 
 
 Implement a topic detection system that identifies the main topic or subject of each chat branch or conversation. Users can then search for chats based on these topics, such as "go to the branch where we explored xyz".
 
-**Semantic search**
+#### Emotion-based
 
-Enhance the search functionality by using semantic similarity techniques to identify branches or conversations that are related to the user's query, even if they don't contain the exact keywords. This can help users find relevant chats more easily.
+Search by how you felt at the time. "It was a lively conversation", "I remember being upset at the time", ...
 
-**User-friendly navigation**
+#### Event-based
 
-Provide a simple and intuitive interface for users to navigate between branches and chats, either through text commands or a graphical interface. This can include commands like "go to the parent branch" or "list all sibling branches".
+"We had recently been talking about ...", "{External world event} had just happened", ...   
 
-### Speech UI
+### 🗣 Speech UI
+Integrate microphone + speaker access and run Text-to-Speech and Speech-to-Text.
 
-Text-to-Speech and Speech-to-Text
+### 👨‍👩‍👦‍👦 Profiles
 
-## Possible Future Features
-User profiles: 
+#### User Profiles
+Create and manage User profiles which store preferences, chat history, and other personalization settings.
 
-Allow users to create and manage profiles, which store their preferences, chat history, and other personalization settings. This could help tailor the chatbot's responses to specific users.
+#### Bot Profiles
+Dynamically switch between 'fine tuning' bot profiles. Manage multiple instances of the bot.
 
-Sentiment analysis: 
 
-Implement sentiment analysis to gauge the mood of the user during the conversation. The chatbot could adjust its responses accordingly to maintain a positive and engaging experience.
+### 😊 Sentiment analysis
 
-Language translation: 
+Implement sentiment analysis to gauge the mood of the user during the conversation. The chatbot could adjust its responses accordingly to maintain a positive and engaging experience, or other objectives.
 
-Add a translation feature that allows users to communicate with the chatbot in their preferred language. The chatbot could automatically detect and translate messages into the desired language.
+### 🌏 Language translation
 
-Speech-to-text and text-to-speech: 
+Add a translation feature that allows users to communicate with the chatbot in their preferred language + enables the bot to translate content. Auto-detect and translate messages into the desired language.
 
-Integrate speech recognition and synthesis features to enable users to interact with the chatbot using voice commands and receive spoken responses.
+### 🎯 Topic-based suggestions
 
-Topic-based suggestions: 
+Detect the topic of conversation and offers relevant suggestions or information to the user. 
 
-Implement a system that detects the topic of conversation and offers relevant suggestions or information to the user. This could help the chatbot provide more engaging and useful responses.
+### 👻 Bot-initiated prompts
+Enable the bot to start conversations. (Hype don this / I should implement this..)
 
-Multi-user conversations: 
+### 🎉 Multi-user conversations
 
-Enable the chatbot to handle multi-user conversations, where multiple people can interact with the chatbot and each other in the same chat thread.
+Enable the bot to handle multi-user conversations where multiple people can interact with the bot and each other in the same chat thread. I.e. give it the ability to spawn an IRC / Discord server and jump in it.
 
-Chatbot training: 
+### 🏋️‍♂️ Chatbot training
 
-Implement a feature that allows users to provide feedback on the chatbot's responses, helping it improve over time. This feedback could be used to fine-tune the model or identify areas that need improvement.
+Enable the bot to process user-input and update it's `system` prompts to improve its informatation processing and response genreation.
 
-Scheduled prompts: 
+### ⏰ Cron-style scheduled prompts
 
-Add a feature that allows users to schedule prompts to be sent at specific times or intervals, which could be useful for reminders, follow-ups, or periodic check-ins.
+Schedule prompts to be sent at specific times or intervals. Useful for reminders, follow-ups, periodic check-ins, etc.
 
-Integration with external services: 
+### 🛠 Integration with external services
 
-Enable the chatbot to interact with external services, such as email, calendar, or project management tools, to provide additional functionality and context-aware responses.
+Load it up with APIs / Integrate the auto-API finder project so it can do all the things.
 
-Emotion-aware responses: 
+### 🫠 Emotion-aware responses
 
-Implement emotion detection in the text to help the chatbot better understand the user's feelings and respond more empathetically.
+Augment sentiment analysis with 'emotion detection' to better navigate user-interactions. Probably go all-in and also give the bot emotions. (lol?)

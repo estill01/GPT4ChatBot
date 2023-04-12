@@ -7,8 +7,10 @@ from pathlib import Path
 from threading import Thread
 import math
 
+# TODO Refactor - extract functionality to properly organized file structure (it's time..)
+# TODO Integrate ChromaDB ; can query here first and then if no hits ping GPT4 API
+# TODO Implement summary-based 'context stretching'
 # TODO Get it to work with git repos ; make commits and etc like git2gpt does
-# TODO Web interface (?)
 
 class GPT4ChatBot:
     def __init__(self, api_key, auto_summarize_interval=5, auto_higher_order_summarize_base=5):
@@ -51,6 +53,7 @@ class GPT4ChatBot:
 
         return chat_id
 
+    # TODO Fix this / make it acutally useful
     def _generate_description(self, initial_prompt):
         return f"Chat: {initial_prompt[:50]}{'...' if len(initial_prompt) > 50 else ''}"
 
@@ -94,6 +97,8 @@ class GPT4ChatBot:
 
     def summarize_chat_block(self, chat_id, summary_level=1):
         messages = self.chats[chat_id]["messages"]
+        
+        # This is an absolute trash implementation ; wtf computer? come on. seriously. Fine. I'll do it myself..
         if summary_level == 1:
             recent_messages = messages[-(self.auto_summarize_interval * 2):]
         elif summary_level == 2:
@@ -109,6 +114,7 @@ class GPT4ChatBot:
 
         self.chats[chat_id]["messages"].append({"role": "summary", "content": summary_response["text"], "summary_level": summary_level})
 
+        # TODO Extract to method
         # Save the chat thread summary data to a file
         chat_path = self.chats[chat_id]["path"]
         summary_file_path = os.path.join(chat_path, "summary.json")
@@ -141,7 +147,7 @@ class GPT4ChatBot:
 
         self.stream_callback = file_stream_callback
 
-    # TODO Fix this; gross defaults
+    # TODO Switch this to `ChatCompletions` endpoint
     def generate_response(self, prompt, max_tokens=100, stream=False):
         if not stream:
             response = openai.Completion.create(
@@ -305,7 +311,7 @@ class GPT4ChatBot:
             log_file.write(f"AI: {response.choices[0]['text']}\n")
             log_file.write("\n")
 
-    # Working on Projects
+    # WIP - Implement different 'modes' so to e.g. overwrite changes in docs vs append-only, etc
 
     def set_project_type(self, project_type):
         self.working_on_project = project_type
